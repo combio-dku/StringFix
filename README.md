@@ -16,7 +16,7 @@ StringFix can be installed using pip command. With python3 installed in your sys
 
 ## Command line usage of StringFix
 
-`HiCAT_example_py_v02.ipynb` is example code of HiCAT in Jupyter notebook, where you can see how to import and run HiCAT. For quick overveiw of the usage of HiCAT, simply click `HiCAT_example_py_v02.ipynb` above in the file list.
+`run_sfix.py` is example code of HiCAT in Jupyter notebook, where you can see how to import and run HiCAT. For quick overveiw of the usage of HiCAT, simply click `HiCAT_example_py_v02.ipynb` above in the file list.
 
 To run the example, download the Jupyter notebook file, maker DB in `.tsv` file and a sample single-cell RNA-Seq data with `.h5ad` extension (It is one of the data we used in our paper mentioned above). Just follow the instruction below.
 
@@ -29,22 +29,6 @@ To run the example, download the Jupyter notebook file, maker DB in `.tsv` file 
 To run HiCAT, you need the pre-installed python packages `Numpy`, `Pandas`, `sklearn`, `scipy`, and `sknetwork`.
 `seaborn` and `matplotlib` are required only to show the results, not for the HiCAT itself.
 All of them can be installed simply using `pip` command.
-
-## Using HiCAT in R
-
-(Installed using pip) You also can import and use HiCAT in R, for which you need the R package `reticulate`.
-First, import HiCAT using the following command
-
-`library(reticulate)`  
-`mkrcnt <- import("MarkerCount.hicat")`
-
-Then, you can call the HiCAT functions as follows.
-
-`df_res <- mkrcnt$HiCAT( .. arguments .. )` 
-
-The arguments to pass and the return value are the same as those in python.
-R example of HiCAT is in R script `HiCAT_example.R`
-Tested in linux Mint with R version 4.0.5. (numpy v1.21.1, scipy v1.7.1 without scikit-network)
 
 ## Contact
 Send email to syoon@dku.edu for any inquiry on the usages.
