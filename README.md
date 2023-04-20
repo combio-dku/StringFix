@@ -16,7 +16,8 @@ StringFix can be installed using pip command. With python3 installed in your sys
 
 ## Command line usage of StringFix
 
-`run_sfix.py` is the python script that can be run in a terminal. Download `run_sfix.py` to your local directory and simply run the script `python3 run_sfix.py` in a terminal to see the available parameters.
+`run_sfix.py` is a python script that can be run in a terminal. 
+Download `run_sfix.py` to your local directory and simply run the script by typing `python3 run_sfix.py` in a terminal to see the available parameters.
 According to what information is provided, StringFix is run in one of the following 2 modes of operation.
 
 1. Genome-guided mode: requires only SAM or BAM file (a mandatory parameter)
