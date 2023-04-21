@@ -27,9 +27,9 @@ StringFix can be installed using pip command. With python3 installed in your sys
 - Once it is successfully run, it outputs the following files
 
   1. __transcriptome.fasta__, containing the transcript sequences for all the isoforms that were detected as 'expressed' with its estimated coverage above the threshold
-  2. __proteome.fasta__, containing the amino acid sequences for all the protein-coding genes that were detected as 'expressed' with its estimated coverage above the threshold
+  2. __Expression profiles__ in 'tsv' format, containing the raw read coverage depth and TPM for all the transcript detected
   3. __SNV summary__ in 'tsv' format, containg all the small variations, including indel and SNP. SNPs are provided only if the path to the reference genome is provided
-  4. __Expression profiles__ in 'tsv' format, containing the raw read coverage depth and TPM for all the transcript detected
+  4. __proteome.fasta__, containing the amino acid sequences for all the protein-coding genes that were detected as 'expressed' with its estimated coverage above the threshold. (Path to the reference genome must be given)
 
 ## Contact
 Send email to syoon@dku.edu for any inquiry on the usages.
