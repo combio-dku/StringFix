@@ -13,7 +13,7 @@ StringFix can be installed using pip command. With python3 installed in your sys
 
 `pip install StringFix`
 
-StringFix requires 
+StringFix requires the pre-installed python packages including `Numpy`, `Pandas`, `sklearn`, and `scipy`.
 
 ## Command line usage of StringFix
 
