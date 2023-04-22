@@ -36,7 +36,7 @@ StringFix requires the pre-installed python packages including `Numpy`, `Pandas`
 1. Click [here](https://drive.google.com/file/d/1GLMhaBGxPiG9--x8oMGXg9bjXORC3fRR/view?usp=sharing) to download the test data and store it to your preferred directory.
 2. decompress the file by typing `tar -xzvf StringFix_test_data.tar.gz` in a terminal.
 3. Change directory to the decompressed directory.
-4. run `./test_run.sh`. (If needed, make the shell script to executable by typing `chmod 777 test_run.sh`)
+4. run `./test_run.sh`. (If needed, make the shell script executable by typing `chmod 777 test_run.sh`)
 
 ## Contact
 Send email to syoon@dku.edu for any inquiry on the usages.
