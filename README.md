@@ -1,4 +1,4 @@
-# StringFix: An annotation-guided transcriptome assembler
+# StringFix: an annotation-guided transcriptome assembler
 
 ## Brief introduction
 - StringFix recover transcript sequence and the corresponding amino acid sequence by taking small variants (INDEL and SNP) into account.
