@@ -31,7 +31,7 @@ def get_args():
     optional.add_argument('-p', type=str,  metavar='',
                         help='Number of cores to use', default="4")
     optional.add_argument('-g', action = 'store_true',
-                        help='Set this option to generate customized genome and gtf.')
+                        help='Use this option to generate customized genome.')
     # optional.add_argument('-c', action = 'store_true',
     #                     help='Set this option to process chromosomes 1-by-1 to save memory usage.')
     optional.add_argument('-sfx', type=str,  metavar='',
@@ -57,6 +57,8 @@ def get_args():
                         help='Maximum number of isoforms per gene(read chunk). Applies when guide GTF is not provided. (>8).', default="16")
     optional.add_argument('-xsa', action = 'store_true',
                         help='Use this option to exclude secondary alignment.')
+    optional.add_argument('-s', action = 'store_false',
+                        help='Use this option to save gene descriptor and loci.', default=False)
     optional.add_argument('-j', type=str,  metavar='',
                         help='Jump to step j [0 or 1 or 2]', default="0")
     args = parser.parse_args()
@@ -66,7 +68,7 @@ def get_args():
 def main():
 
     print('+------------------------------+')
-    print('|      Stringfix v.0.6.4       |')
+    print('|      Stringfix v.0.7.1       |')
     print('+------------------------------+')
 
     args, parser = get_args()
@@ -97,13 +99,16 @@ def main():
         sa = 2
         if args.xsa: sa = 0
 
+        save_gds_and_loci = False
+        if args.s: save_gds_and_loci = True
+
         sf.MIN_CVG_FOR_SNP_CORRECTION = int(args.mdp)
-        sf.I_VALID_CVG = max(1, np.float(args.mdi))
-        sf.D_VALID_CVG = max(1, np.float(args.mdd))
+        sf.I_VALID_CVG = max(1, float(args.mdi))
+        sf.D_VALID_CVG = max(1, float(args.mdd))
         sf.I_VALID_CFRAC = float(args.mdf)
         sf.D_VALID_CFRAC = float(args.mdf)
-        sf.MIN_COV_TO_SEL = np.float(args.mcv)
-        sf.MIN_ABN_TO_SEL = np.float(args.mcd)
+        sf.MIN_COV_TO_SEL = float(args.mcv)
+        sf.MIN_ABN_TO_SEL = float(args.mcd)
         sf.MIN_TR_LENGTH = int(args.mtl)
         sf.MIN_PR_LENGTH = int(args.mpl)
         sf.MAX_NUM_PATHS = int(args.np)
@@ -118,15 +123,16 @@ def main():
         if args.dir is not None: 
             if not os.path.exists(args.dir): os.mkdir(args.dir)
 
-        file_out, gds = StringFix_analysis(sam_file, gtf = gtf_file, genome = genome_fa, jump = jump_to, \
-                n_cores=n_cores, out_tr = True, cbyc = cbyc, suffix = args.sfx, out_dir = args.dir, sa = sa ) 
+        file_out, gds = StringFix_analysis(sam_file, gtf = gtf_file, genome_file = genome_fa, jump = jump_to, \
+                n_cores=n_cores, out_tr = True, cbyc = cbyc, suffix = args.sfx, out_dir = args.dir, sa = sa, \
+	  sav_rgn =  save_gds_and_loci) 
 
-        if (gds is not None) & (jump_to < 2):
+        if (save_gds_and_loci):  
             print('Saving gene descriptor .. ', end = ' ', flush = True)
             with open(file_out + '.gds', 'wb') as f:
                 pickle.dump( (gds), f )
             print('done. ')
-        else:
+        elif (gds is None) | (jump_to >= 2):
             print('StringFix started ', datetime.datetime.now())
             print('Loading gene descriptor .. ', end = ' ', flush = True)
             with open(file_out + '.gds', 'rb') as f:
