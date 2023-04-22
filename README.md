@@ -32,7 +32,14 @@ StringFix requires the pre-installed python packages including `Numpy`, `Pandas`
   3. __SNV summary__ in 'tsv' format, containg all the small variations, including indel and SNP. SNPs are provided only if the path to the reference genome is provided
   4. __proteome.fasta__, containing the amino acid sequences for all the protein-coding genes that were detected as 'expressed' with its estimated coverage above the threshold. (Path to the reference genome must be given to get protein sequences)
 
+## Example data and script
+1. Click [here] to download the test data and store it to your preferred directory.
+2. decompress the file by typing `python run_sfix.py` in a terminal.
+3. Change directory to the decompressed directory.
+4. run `./test_run.sh`. (If needed, make the shell script to executable by typing `chmod 777 test_run.sh`)
+
 ## Contact
 Send email to syoon@dku.edu for any inquiry on the usages.
+
 
 
